@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
 
 def Pifagor(x1, x2):
     return np.sqrt(x1**2 + x2**2)
@@ -37,6 +38,7 @@ def making_plots(object_properties, data_input_row):
         plt.plot(x, y[0], label = object_properties[i][0]+' '+object_properties[i][2]+' '+'V(t)')
         plt.grid(True)
         plt.legend(loc='best', fontsize=5)
+        sp.xaxis.set_major_locator(ticker.MultipleLocator((x[-1]-x[0])/4))
         x, y = [], []
         x = time
         y.append([Pifagor(data[j][0]-data_star[j][0], data[j][1]-data_star[j][1]) for j in range(len(data))])
@@ -44,6 +46,7 @@ def making_plots(object_properties, data_input_row):
         plt.plot(x, y[0], label = object_properties[i][0]+' '+object_properties[i][2]+' '+'R(t)')
         plt.grid(True)
         plt.legend(loc='best', fontsize=5)
+        sp.xaxis.set_major_locator(ticker.MultipleLocator((x[-1]-x[0])/4))
     plt.show()
         
         
